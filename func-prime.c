@@ -1,49 +1,75 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <math.h>
 
-void factorial(int number)
-{
-int r,num=number,a;
-if(num!=1||2)
-{
-for(a=2;a<num;a++)
-{
- r=num%a;
-if(r==0)
-{
-break ;
-}
-}
-if(r!=0)
-{
- printf("%d is a prime number",num);
-}
-else
-{
- printf("%d is a composite number",num);
-}
-}
-else
-{
-printf("The number is prime number");
-}
-}
-
+int checkPrimeNumber(int n);
+int checkArmstrongNumber(int n);
 
 int main()
 {
-int number;
-printf("Write the  number : ");
-scanf("%d",&number);
+    int n, flag;
 
-if(number>0)
-{
-factorial(number);
-}
-else
-{
-printf("Error");
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    // Check prime number
+    flag = checkPrimeNumber(n);
+    if (flag == 1)
+        printf("%d is a prime number.\n", n);
+    else
+        printf("%d is not a prime number.\n", n);
+
+    // Check Armstrong number
+    flag = checkArmstrongNumber(n);
+    if (flag == 1)
+        printf("%d is an Armstrong number.", n);
+    else
+        printf("%d is not an Armstrong number.",n);
+    return 0;
 }
 
-return 0;
+int checkPrimeNumber(int n)
+{
+    int i, flag = 1;
+
+    for(i=2; i<=n/2; ++i)
+    {
+
+    // condition for non-prime number
+        if(n%i == 0)
+        {
+            flag = 0;
+            break;
+        }
+    }
+    return flag;
+}
+
+int checkArmstrongNumber(int number)
+{
+    int originalNumber, remainder, result = 0, n = 0, flag;
+
+    originalNumber = number;
+
+    while (originalNumber != 0)
+    {
+        originalNumber /= 10;
+        ++n;
+    }
+
+    originalNumber = number;
+
+    while (originalNumber != 0)
+    {
+        remainder = originalNumber%10;
+        result += pow(remainder, n);
+        originalNumber /= 10;
+    }
+
+    // condition for Armstrong number
+    if(result == number)
+        flag = 1;
+    else
+        flag = 0;
+
+    return flag;
 }

@@ -1,15 +1,15 @@
 #include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-
-int main()
+#include<conio.h>
+void main()
 {
-double side,area;
-printf("enter the side of a square : ");
-scanf("%lf",&side);
-area =pow(side,2);
-printf("Area of the square : %lf",area);
-printf("Area of square in integer form : %d",(int)area);
+    float side,area;
+    clrscr();
 
-return 0;
+    printf("\n Enter the Length of Side : ");
+    scanf("%f",&side);
+
+    area = side * side ;
+
+    printf("\n Area of Square : %f",area);
+    getch();
 }

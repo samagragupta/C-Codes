@@ -1,24 +1,17 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-int main()
-{
-int n,a,f=1;
-printf("Enter the number : "); //The number of which factorial shoild be taken
-scanf("%d",&n);
-
-if(n>0)
-{
-for(a=n;a>=1;a--)
-{
-f=f*a;
-}
-printf("Factorial of of the number  : %d",f);
-}
-else
-{
-printf("Factorial of 0 = 1");
-}
-
-return 0;
-}
+#include<stdio.h> 
+  
+// function to find factorial of given number 
+unsigned int factorial(unsigned int n) 
+{ 
+    int res = 1, i; 
+    for (i=2; i<=n; i++) 
+        res *= i; 
+    return res; 
+} 
+  
+int main() 
+{ 
+    int num = 5; 
+    printf("Factorial of %d is %d", num, factorial(num)); 
+    return 0; 
+} 
